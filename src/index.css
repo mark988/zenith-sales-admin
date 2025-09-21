@@ -2,39 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* 在线商城数据后台设计系统 - 简洁大方，科技感 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* 主要背景色 - 深色科技感 */
+    --background: 220 26% 8%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* 卡片颜色 - 稍亮的深色 */
+    --card: 220 26% 12%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* 弹出层 */
+    --popover: 220 26% 12%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* 主色调 - 科技蓝 */
+    --primary: 214 84% 56%;
+    --primary-foreground: 220 26% 8%;
+    --primary-glow: 214 84% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* 次要色 - 青色点缀 */
+    --secondary: 180 84% 56%;
+    --secondary-foreground: 220 26% 8%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* 静音色 */
+    --muted: 220 26% 16%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* 强调色 - 青绿色 */
+    --accent: 172 84% 56%;
+    --accent-foreground: 220 26% 8%;
 
-    --destructive: 0 84.2% 60.2%;
+    /* 危险色 */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* 边框和输入 */
+    --border: 220 26% 18%;
+    --input: 220 26% 16%;
+    --ring: 214 84% 56%;
+
+    /* 成功色 */
+    --success: 142 84% 56%;
+    --success-foreground: 220 26% 8%;
+
+    /* 警告色 */
+    --warning: 45 84% 56%;
+    --warning-foreground: 220 26% 8%;
+
+    /* 渐变定义 */
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(172 84% 56%));
+    --gradient-secondary: linear-gradient(135deg, hsl(220 26% 12%), hsl(220 26% 16%));
+    --gradient-hero: linear-gradient(135deg, hsl(214 84% 20%) 0%, hsl(172 84% 20%) 50%, hsl(214 84% 30%) 100%);
+    
+    /* 阴影定义 */
+    --shadow-primary: 0 10px 30px -10px hsl(214 84% 56% / 0.3);
+    --shadow-card: 0 4px 20px hsl(220 26% 4% / 0.4);
+    --shadow-glow: 0 0 40px hsl(214 84% 70% / 0.2);
+
+    /* 动画 */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --radius: 0.5rem;
 
@@ -90,7 +120,15 @@ All colors MUST be HSL.
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* 侧边栏配色 - 适配深色主题 */
+    --sidebar-background: 220 26% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 214 84% 56%;
+    --sidebar-primary-foreground: 220 26% 8%;
+    --sidebar-accent: 220 26% 14%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 26% 18%;
+    --sidebar-ring: 214 84% 56%;
   }
 }
 
@@ -102,4 +140,67 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer components {
+  /* 科技感登录页面专用样式 */
+  .login-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .tech-card {
+    @apply bg-card border border-border shadow-lg backdrop-blur-sm;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .primary-gradient {
+    background: var(--gradient-primary);
+  }
+  
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+  }
+  
+  /* 数据卡片动画 */
+  .data-card {
+    @apply tech-card hover-lift;
+  }
+  
+  /* 动画类 */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* 关键帧动画 */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 20px hsl(214 84% 56% / 0.2); }
+  100% { box-shadow: 0 0 40px hsl(214 84% 56% / 0.4); }
 }
